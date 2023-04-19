@@ -1,0 +1,102 @@
+<!-- <script src="./assets/js/color-modes.js"></script> -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.111.3">
+
+<title>100화면</title>
+
+<link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbar-fixed/">
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .no-scroll {
+        overflow: hidden;
+    }
+</style>
+
+<div class="content" id="content">
+    <!-- 입력1 -->
+    <div class="bg-body-tertiary p-5 rounded">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">경력</span>
+            <input id="id_input1" type="text" class="form-control" placeholder="년차" aria-label="Username"
+                aria-describedby="basic-addon1">
+        </div>
+    </div>
+
+    <!-- 버튼 -->
+    <div class="bg-body-tertiary p-1 rounded">
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <button id="id_btn1" onclick="fun_btn1()" class="btn btn-primary" type="submit">실행</button>
+            </div>
+            <div class="col-3">
+                <button id="id_btn2" onclick="fun_btn2()" class="btn btn-primary" type="submit">새로고침</button>
+            </div>
+        </div>
+    </div>
+
+    <p id="errorMessage" class="text-start" style="color: red;"></p>
+
+    <!-- 버튼 결과 -->
+    <div class="card">
+        <div class="card-body">
+            <p id="id_card1" class="card-text"></p>
+            <p id="id_card2" class="card-text"></p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("id_btn1").addEventListener("click", fun_btn1);
+    document.getElementById("id_btn2").addEventListener("click", fun_btn2);
+
+    function fun_btn1() {
+
+        var id_input1 = document.getElementById("id_input1");
+        var id_card1 = document.getElementById("id_card1");
+        var id_card2 = document.getElementById("id_card2");
+
+        var errorMessage = document.getElementById('errorMessage');
+
+        var year = id_input1.value; // 입력된 년차 
+
+        if (year === '') {
+            errorMessage.textContent = '입력값이 없습니다.'; // 에러 메시지 설정
+            return; // 함수 나가기 
+        } else {
+            errorMessage.textContent = ''; // 에러 메시지 클리어            
+        }
+
+        var result_1 = 0;
+        var result_2 = "초급";
+        if (year >= 15) {
+            result_1 = 900;
+            resutl_2 = "특급";
+        } else {
+            result_1 = 600;
+        }
+
+        id_card1.innerHTML = result_1;
+        id_card2.innerHTML = result_2;
+    }
+
+    function fun_btn2() {
+
+        var id_input1 = document.getElementById("id_input1");
+        var id_card1 = document.getElementById("id_card1");
+        var id_card2 = document.getElementById("id_card2");
+
+        var errorMessage = document.getElementById('errorMessage');
+
+        id_input1.value = '';
+        id_card1.innerHTML = '';
+        id_card2.innerHTML = '';
+
+        errorMessage.textContent = '';
+
+    }
+</script>
