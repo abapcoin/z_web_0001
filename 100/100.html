@@ -1,4 +1,6 @@
-<!-- <script src="./assets/js/color-modes.js"></script> -->
+<!-- - bootstrap 은 컨테이너 단위 이고, 
+가로줄을 12개 컬럼으로 배치한다. -->
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
@@ -16,87 +18,196 @@
     }
 </style>
 
-<div class="content" id="content">
-    <!-- 입력1 -->
-    <div class="bg-body-tertiary p-5 rounded">
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="basic-addon1">경력</span>
-            <input id="id_input1" type="text" class="form-control" placeholder="년차" aria-label="Username"
-                aria-describedby="basic-addon1">
-        </div>
-    </div>
+<div class="container text-center" id="id_container">
 
-    <!-- 버튼 -->
-    <div class="bg-body-tertiary p-1 rounded">
-        <div class="row justify-content-center">
-            <div class="col-3">
-                <button id="id_btn1" onclick="fun_btn1()" class="btn btn-primary" type="submit">실행</button>
-            </div>
-            <div class="col-3">
-                <button id="id_btn2" onclick="fun_btn2()" class="btn btn-primary" type="submit">새로고침</button>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- 입력1 -->
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">경력</span>
+                <input id="id_input1" type="text" class="form-control" placeholder="년차" aria-describedby="basic-addon1">
             </div>
         </div>
     </div>
 
-    <p id="errorMessage" class="text-start" style="color: red;"></p>
-
-    <!-- 버튼 결과 -->
-    <div class="card">
-        <div class="card-body">
-            <p id="id_card1" class="card-text"></p>
-            <p id="id_card2" class="card-text"></p>
+    <div class="row ">
+        <div class="col-3">
+            <!-- 드롭다운 -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    모듈
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a id="id_dd_1" class="dropdown-item" href="#">SD</a></li>
+                    <li><a id="id_dd_2" class="dropdown-item" href="#">MM</a></li>
+                    <li><a id="id_dd_3" class="dropdown-item" href="#">PP</a></li>
+                    <li><a id="id_dd_4" class="dropdown-item" href="#">FI</a></li>
+                    <li><a id="id_dd_5" class="dropdown-item" href="#">CO</a></li>
+                    <li><a id="id_dd_6" class="dropdown-item" href="#">기타</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-6">
+            <p id="id_dd_text1" class="text-center"></p>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12"><br></div>
+    </div>
+
+    <div class="row ">
+        <div class="col-3">
+            <!-- 드롭다운 -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    역활
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a id="id_dd_11" class="dropdown-item" href="#">개발자</a></li>
+                    <li><a id="id_dd_22" class="dropdown-item" href="#">컨설턴트</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-6">
+            <p id="id_dd_text2" class="text-center"></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12"><br></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- 버튼 -->
+            <button id="id_btn1" onclick="fun_btn1()" class="btn btn-primary" type="submit">실행</button>
+            <button id="id_btn2" onclick="fun_btn2()" class="btn btn-primary" type="submit">새로고침</button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p id="errorMessage" class="text-start" style="color: red;"></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- 버튼 결과 -->
+        <div class="card">
+            <div class="card-body">
+                <p id="id_card1" class="card-text"></p>
+                <p id="id_card2" class="card-text"></p>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 </div>
 
 <script>
+    //------------------------------------------------------------------------------
+    // tag id 참조
+    var id_input1 = document.getElementById("id_input1");
+    var id_card1 = document.getElementById("id_card1");
+    var id_card2 = document.getElementById("id_card2");
+    var errorMessage = document.getElementById('errorMessage');
+    var id_dd_text1 = document.getElementById("id_dd_text1");
+
+    //------------------------------------------------------------------------------
+    // button id 함수 연결 
     document.getElementById("id_btn1").addEventListener("click", fun_btn1);
     document.getElementById("id_btn2").addEventListener("click", fun_btn2);
 
+    // 모듈 
+    document.getElementById('id_dd_1').addEventListener('click', function () {
+        id_dd_text1.textContent = 'SD';
+    });
+    document.getElementById('id_dd_2').addEventListener('click', function () {
+        id_dd_text1.textContent = 'MM';
+    });
+    document.getElementById('id_dd_3').addEventListener('click', function () {
+        id_dd_text1.textContent = 'PP';
+    });
+    document.getElementById('id_dd_4').addEventListener('click', function () {
+        id_dd_text1.textContent = 'FI';
+    });
+    document.getElementById('id_dd_5').addEventListener('click', function () {
+        id_dd_text1.textContent = 'CO';
+    });
+    document.getElementById('id_dd_6').addEventListener('click', function () {
+        id_dd_text1.textContent = '기타';
+    });
+
+    // 역활 선택
+    document.getElementById('id_dd_11').addEventListener('click', function () {
+        id_dd_text2.textContent = '개발자';
+    });
+    document.getElementById('id_dd_22').addEventListener('click', function () {
+        id_dd_text2.textContent = '컨설턴트';
+    });
+
+    //---------------------------------------------------------------------------
+    // 실행 버튼
     function fun_btn1() {
 
-        var id_input1 = document.getElementById("id_input1");
-        var id_card1 = document.getElementById("id_card1");
-        var id_card2 = document.getElementById("id_card2");
-
-        var errorMessage = document.getElementById('errorMessage');
-
         var year = id_input1.value; // 입력된 년차 
+        var id_dd_text1 = document.getElementById("id_dd_text1"); // 선택한 모듈
 
         if (year === '') {
-            errorMessage.textContent = '입력값이 없습니다.'; // 에러 메시지 설정
+            errorMessage.textContent = '년차를 입력하세요.'; // 에러 메시지 설정
             return; // 함수 나가기 
         } else {
             errorMessage.textContent = ''; // 에러 메시지 클리어            
         }
 
-        var result_1 = 0;
-        var result_2 = "초급";
-        if (year >= 15) {
+        var result_1 = 0; // 단가 
+        var result_2 = "초급"; // 등급
+
+        if (year >= 1 && year <= 3) {
+            result_1 = 600;
+            resutl_2 = "초급";
+        }
+        else if (year >= 4 && year <= 6) {
+            result_1 = 650;
+            resutl_2 = "중급";
+        }
+        else if (year >= 7 && year <= 9) {
+            result_1 = 750;
+            resutl_2 = "고급";
+        }
+        else if (year >= 10) {
             result_1 = 900;
             resutl_2 = "특급";
-        } else {
-            result_1 = 600;
+        }
+
+        switch (id_dd_text2.textContent) {
+            case '컨설턴트':
+                result_1 = 1300;
+                break;
+            default:
         }
 
         id_card1.innerHTML = result_1;
         id_card2.innerHTML = result_2;
     }
 
+    // 새로고침 버튼
     function fun_btn2() {
-
-        var id_input1 = document.getElementById("id_input1");
-        var id_card1 = document.getElementById("id_card1");
-        var id_card2 = document.getElementById("id_card2");
-
-        var errorMessage = document.getElementById('errorMessage');
 
         id_input1.value = '';
         id_card1.innerHTML = '';
         id_card2.innerHTML = '';
 
         errorMessage.textContent = '';
-
+        id_dd_text1.textContent = '';
+        id_dd_text2.textContent = '';
     }
 </script>
+
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
