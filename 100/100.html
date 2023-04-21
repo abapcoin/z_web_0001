@@ -20,6 +20,12 @@
 
 <div class="container text-center" id="id_container">
 
+    <h1 class="display-1">ABAP 단가</h1>
+    <h1 class="display-1">SAP 단가</h1>
+    <h1 class="display-1">프리랜서 단가</h1>
+    <br>
+    <h1 class="display-5"> 2023년 기준 </h1>
+
     <div class="row">
         <div class="col-md-12">
             <!-- 입력1 -->
@@ -167,23 +173,23 @@
         }
 
         var result_1 = 0; // 단가 
-        var result_2 = "초급"; // 등급
+        var result_2 = ""; // 등급
 
         if (year >= 1 && year <= 3) {
             result_1 = 600;
-            resutl_2 = "초급";
+            result_2 = "초급";
         }
         else if (year >= 4 && year <= 6) {
             result_1 = 650;
-            resutl_2 = "중급";
+            result_2 = "중급";
         }
         else if (year >= 7 && year <= 9) {
             result_1 = 750;
-            resutl_2 = "고급";
+            result_2 = "고급";
         }
         else if (year >= 10) {
             result_1 = 900;
-            resutl_2 = "특급";
+            result_2 = "특급";
         }
 
         switch (id_dd_text2.textContent) {
