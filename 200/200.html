@@ -1,3 +1,128 @@
-<div id="page1">
-    <h1>페이지200</h1>
+<!-- - bootstrap 은 컨테이너 단위 이고, 
+가로줄을 12개 컬럼으로 배치한다. -->
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="MMD 계산기; MDD">
+<meta name="author" content="MMD 계산기">
+<meta name="generator" content="Hugo 0.111.3">
+
+<link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbar-fixed/">
+<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    .no-scroll {
+        overflow: hidden;
+    }
+</style>
+
+<div class="container text-center" id="id_container">
+
+    <h1 class="display-1">MDD 계산기</h1>
+    <h1 class="display-1">고점 계산기</h1>
+    <h1 class="display-1">나락 계산기</h1>
+    <br>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- 입력1 -->
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">최고 가격</span>
+                <input id="id_input1" type="text" class="form-control" placeholder="고점" aria-describedby="basic-addon1">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- 입력2 -->
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">현재 가격</span>
+                <input id="id_input2" type="text" class="form-control" placeholder="현재" aria-describedby="basic-addon1">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12"><br></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- 버튼 -->
+            <button id="id_btn1" onclick="fun_btn1()" class="btn btn-primary" type="submit">MDD 계산</button>
+            <button id="id_btn2" onclick="fun_btn2()" class="btn btn-primary" type="submit">새로고침</button>
+        </div>
+    </div>
 </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p id="errorMessage" class="text-start" style="color: red;"></p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- 버튼 결과 -->
+        <div class="card">
+            <div class="card-body">
+                <p id="id_card1" class="card-text"></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+<script>
+    //------------------------------------------------------------------------------
+    // tag id 참조
+    var id_input1 = document.getElementById("id_input1");
+    var id_input2 = document.getElementById("id_input2");
+    var id_card1 = document.getElementById("id_card1");
+    var errorMessage = document.getElementById('errorMessage');
+
+    //------------------------------------------------------------------------------
+    // button id 함수 연결 
+    document.getElementById("id_btn1").addEventListener("click", fun_btn1);
+    document.getElementById("id_btn2").addEventListener("click", fun_btn2);
+
+    //---------------------------------------------------------------------------
+    // 실행 버튼
+    function fun_btn1() {
+
+        var max = id_input1.value; // 최고 가격 
+        var today = id_input2.value; // 현재 가격
+
+        if (max === '') {
+            errorMessage.textContent = '최고 가격을 입력하세요.'; // 에러 메시지 설정
+            return; // 함수 나가기 
+        }
+        else if (today === '') {
+            errorMessage.textContent = '현재 가격을 입력하세요.'; // 에러 메시지 설정
+            return; // 함수 나가기 
+        } else {
+            errorMessage.textContent = ''; // 에러 메시지 클리어            
+        }
+
+        // MDD 계산 공식 
+        var result_1 = (today - max) / max * 100;
+
+        result_1 = 'MDD ' + result_1 + ' %';
+
+        id_card1.innerHTML = result_1;
+    }
+
+    // 새로고침 버튼
+    function fun_btn2() {
+
+        id_input1.value = '';
+        id_input2.value = '';
+        id_card1.innerHTML = '';
+        errorMessage.textContent = '';
+    }
+</script>
+
+<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
